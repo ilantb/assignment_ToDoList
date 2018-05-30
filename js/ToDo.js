@@ -2,17 +2,20 @@ class TodoList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: []
+            items: [],
+            isShown: true,
+            counter: 0
         };
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
+        this.hide = this.hide.bind(this);
     }
 
     addItem(e) {
-        if (this.inputElement.value !== "") {
+        if (this._inputElement.value !== "") {
             var newItem = {
-                text: this.inputElement.value,
-                key: Date.now()
+                text: this._inputElement.value,
+                key: this.state.counter
             };
 
             this.setState((prevState) => {
@@ -21,30 +24,38 @@ class TodoList extends React.Component {
                 };
             });
 
-            this.inputElement.value = "";
+            this._inputElement.value = "";
         }
-
+        this.state.counter = this.state.counter + 1;
         console.log(this.state.items);
-
         e.preventDefault();
     }
 
     deleteItem(key) {
         var filteredItems = this.state.items.filter(function (item) {
-          return (item.key !== key);
+            return (item.key !== key);
         });
-       
+
         this.setState({
-          items: filteredItems
+            items: filteredItems
         });
-      }      
+    }
+
+    hide() {
+        this.setState({
+            isShown: !this.state.isShown
+        })
+    }
 
     render() {
+        var boxClass = this.state.isShown ? "todoListMain": "hide"
         return (
-            <div className="todoListMain">
+            <div>
+            <button class="btns" id="toDoBtn">ToDo</button><button class="btns" id="doneBtn" onClick={this.hide}>Done</button>
+            <div className={boxClass}>
                 <div className="header">
                     <form onSubmit={this.addItem}>
-                        <input ref={(a) => this.inputElement = a}
+                        <input ref={(a) => this._inputElement = a}
                             placeholder="enter task">
                         </input>
                         <button type="submit">add</button>
@@ -52,6 +63,7 @@ class TodoList extends React.Component {
                 </div>
                 <TodoItems entries={this.state.items}
                     delete={this.deleteItem} />
+            </div>
             </div>
         );
     }
