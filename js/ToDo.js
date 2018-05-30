@@ -29,7 +29,10 @@ class TodoList extends React.Component {
             this.inputElement.value = "";
         }
         this.state.counter = this.state.counter + 1;
+<<<<<<< HEAD
         
+=======
+>>>>>>> 5ca4773304de6b3eaf645a7232d1040fa38ae1da
         e.preventDefault();
         
     }
