@@ -27,7 +27,6 @@ class TodoList extends React.Component {
             this._inputElement.value = "";
         }
         this.state.counter = this.state.counter + 1;
-        console.log(this.state.items);
         e.preventDefault();
     }
 
@@ -49,6 +48,7 @@ class TodoList extends React.Component {
 
     render() {
         var boxClass = this.state.isShown ? "todoListMain": "hide"
+        console.log(this.state.items);
         return (
             <div>
             <button class="btns" id="toDoBtn">ToDo</button><button class="btns" id="doneBtn" onClick={this.hide}>Done</button>
