@@ -69,6 +69,8 @@ class TodoList extends React.Component {
     }
 }
 
+
+
 class TodoItems extends React.Component {
     constructor(props) {
         super(props);
@@ -78,9 +80,12 @@ class TodoItems extends React.Component {
     delete(key) {
         this.props.delete(key);
     }
+    cross(key) {
+        this.props.cross(key);
+    }
     createTasks(item) {
-        return <li onClick={() => this.delete(item.key)}
-            key={item.key}>{item.text}</li>
+        return <li key={item.key}>{item.text}<button className="crossButton" key={item.key} onClick={() => this.cross(item.key)}>C</button><button className="deleteButton" key={item.key} onClick={() => this.delete(item.key)}>D</button></li>;
+            
     }
 
     render() {
