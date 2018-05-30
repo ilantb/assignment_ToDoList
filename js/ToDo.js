@@ -12,33 +12,29 @@ class TodoList extends React.Component {
     }
 
     addItem(e) {
-        if (this.inputElement.value !== "") {
+        if (this._inputElement.value !== "") {
             var newItem = {
-                text: this.inputElement.value,
+                text: this._inputElement.value,
                 key: this.state.counter
             };
 
             this.setState((prevState) => {
-                
                 return {
-                    items: prevState.items.concat(newItem),
-                   
+                    items: prevState.items.concat(newItem)
                 };
             });
 
-            this.inputElement.value = "";
+            this._inputElement.value = "";
         }
         this.state.counter = this.state.counter + 1;
-        
         e.preventDefault();
-        
     }
 
     deleteItem(key) {
         var filteredItems = this.state.items.filter(function (item) {
             return (item.key !== key);
         });
-        
+
         this.setState({
             items: filteredItems
         });
@@ -59,7 +55,7 @@ class TodoList extends React.Component {
             <div className={boxClass}>
                 <div className="header">
                     <form onSubmit={this.addItem}>
-                        <input ref={(a) => this.inputElement = a}
+                        <input ref={(a) => this._inputElement = a}
                             placeholder="enter task">
                         </input>
                         <button type="submit">add</button>
@@ -76,6 +72,7 @@ class TodoList extends React.Component {
 class TodoItems extends React.Component {
     constructor(props) {
         super(props);
+
         this.createTasks = this.createTasks.bind(this);
     }
     delete(key) {
@@ -83,7 +80,7 @@ class TodoItems extends React.Component {
     }
     createTasks(item) {
         return <li onClick={() => this.delete(item.key)}
-            key={item.key}><textarea rows="2" cols="30">{item.text}</textarea></li>
+            key={item.key}>{item.text}</li>
     }
 
     render() {
