@@ -3,25 +3,23 @@ class TodoList extends React.Component {
         super(props);
         this.state = {
             items: [],
-            counter : 0
+            isShown: true,
+            counter: 0
         };
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
-       
+        this.hide = this.hide.bind(this);
     }
 
     addItem(e) {
-       
         if (this.inputElement.value !== "") {
-            var myCounter = this.state.counter;
-            var newCounter = myCounter + 1;
             var newItem = {
                 text: this.inputElement.value,
-                key: newCounter
+                key: this.state.counter
             };
 
             this.setState((prevState) => {
-                key: newCounter
+                
                 return {
                     items: prevState.items.concat(newItem),
                    
@@ -30,25 +28,35 @@ class TodoList extends React.Component {
 
             this.inputElement.value = "";
         }
-
-        console.log(this.state.items);
-
+        this.state.counter = this.state.counter + 1;
+        
         e.preventDefault();
+        
     }
 
     deleteItem(key) {
         var filteredItems = this.state.items.filter(function (item) {
-          return (item.key !== key);
+            return (item.key !== key);
         });
-       
+        
         this.setState({
-          items: filteredItems
+            items: filteredItems
         });
-      }      
+    }
+
+    hide() {
+        this.setState({
+            isShown: !this.state.isShown
+        })
+    }
 
     render() {
+        var boxClass = this.state.isShown ? "todoListMain": "hide"
+        console.log(this.state.items);
         return (
-            <div className="todoListMain">
+            <div>
+            <button class="btns" id="toDoBtn">ToDo</button><button class="btns" id="doneBtn" onClick={this.hide}>Done</button>
+            <div className={boxClass}>
                 <div className="header">
                     <form onSubmit={this.addItem}>
                         <input ref={(a) => this.inputElement = a}
@@ -60,6 +68,7 @@ class TodoList extends React.Component {
                 <TodoItems entries={this.state.items}
                     delete={this.deleteItem} />
             </div>
+            </div>
         );
     }
 }
@@ -67,7 +76,6 @@ class TodoList extends React.Component {
 class TodoItems extends React.Component {
     constructor(props) {
         super(props);
-
         this.createTasks = this.createTasks.bind(this);
     }
     delete(key) {
@@ -75,7 +83,7 @@ class TodoItems extends React.Component {
     }
     createTasks(item) {
         return <li onClick={() => this.delete(item.key)}
-            key={item.key}>{item.text}</li>
+            key={item.key}><textarea rows="2" cols="30">{item.text}</textarea></li>
     }
 
     render() {
