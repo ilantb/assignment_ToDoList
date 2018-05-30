@@ -2,22 +2,29 @@ class TodoList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: []
+            items: [],
+            counter : 0
         };
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
+       
     }
 
     addItem(e) {
+       
         if (this.inputElement.value !== "") {
+            var myCounter = this.state.counter;
+            var newCounter = myCounter + 1;
             var newItem = {
                 text: this.inputElement.value,
-                key: Date.now()
+                key: newCounter
             };
 
             this.setState((prevState) => {
+                key: newCounter
                 return {
-                    items: prevState.items.concat(newItem)
+                    items: prevState.items.concat(newItem),
+                   
                 };
             });
 
