@@ -4,17 +4,20 @@ class TodoList extends React.Component {
         this.state = {
             items: [],
             isShown: true,
+            isShownDone: false,
             counter: 0
         };
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
         this.hide = this.hide.bind(this);
+        this.hideDone = this.hideDone.bind(this);
+
     }
 
     addItem(e) {
-        if (this._inputElement.value !== "") {
+        if (this.inputElement.value !== "") {
             var newItem = {
-                text: this._inputElement.value,
+                text: this.inputElement.value,
                 key: this.state.counter
             };
 
@@ -24,7 +27,7 @@ class TodoList extends React.Component {
                 };
             });
 
-            this._inputElement.value = "";
+            this.inputElement.value = "";
         }
         this.state.counter = this.state.counter + 1;
         e.preventDefault();
@@ -41,29 +44,41 @@ class TodoList extends React.Component {
     }
 
     hide() {
+            this.setState({
+                isShown: false,
+                isShownDone:true
+            })
+    }
+
+    hideDone() {
         this.setState({
-            isShown: !this.state.isShown
+            isShown: true,
+            isShownDone:false
         })
     }
 
     render() {
-        var boxClass = this.state.isShown ? "todoListMain": "hide"
         console.log(this.state.items);
         return (
             <div>
-            <button class="btns" id="toDoBtn">ToDo</button><button class="btns" id="doneBtn" onClick={this.hide}>Done</button>
-            <div className={boxClass}>
-                <div className="header">
-                    <form onSubmit={this.addItem}>
-                        <input ref={(a) => this._inputElement = a}
-                            placeholder="enter task">
-                        </input>
-                        <button type="submit">add</button>
-                    </form>
+                <button class="btns" id="toDoBtn" onClick={this.hideDone}>ToDo</button>
+                <button class="btns" id="doneBtn" onClick={this.hide}>Done</button>
+                <div className={this.state.isShown ? "todoListMain" : "hide"}>
+                    <div className="header">
+                        <form onSubmit={this.addItem}>
+                            <input ref={(a) => this.inputElement = a}
+                                placeholder="enter task">
+                            </input>
+                            <button type="submit">add</button>
+                        </form>
+                    </div>
+                    <TodoItems entries={this.state.items}
+                        delete={this.deleteItem} />
                 </div>
-                <TodoItems entries={this.state.items}
-                    delete={this.deleteItem} />
-            </div>
+                <div className={ this.state.isShownDone ? "doneListMain" : "hide"}>
+                    <DoneItems entries={this.state.items}
+                        delete={this.deleteItem} />
+                </div>
             </div>
         );
     }
@@ -92,6 +107,20 @@ class TodoItems extends React.Component {
                 {listItems}
             </ul>
         );
+    }
+};
+
+class DoneItems extends React.Component {
+    constructor(props) {
+        super(props);
+
+    }
+
+    render() {
+
+        return (
+            <ul className="theList">
+            </ul>);
     }
 };
 
