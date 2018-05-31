@@ -43,12 +43,10 @@ class TodoList extends React.Component {
         this.state.itemsDone.push(toCrossItem);
         console.log(this.state.itemsDone);
        
-       
         
-
         this.setState({
-            itemsDone : this.state.itemsDone,
-            
+            itemsDone : this.state.itemsDone ,
+            toCrossItem : this.state.toCrossItem           
         });
      
     }
