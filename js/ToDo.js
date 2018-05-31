@@ -7,7 +7,7 @@ class TodoList extends React.Component {
             isShown: true,
             isShownDone: false,
             counter: 0,
-            className : "toDo"
+            className: "toDo"
         };
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
@@ -21,7 +21,7 @@ class TodoList extends React.Component {
             var newItem = {
                 text: this.inputElement.value,
                 key: this.state.counter,
-                className : this.state.className
+                className: this.state.className
             };
 
             this.setState((prevState) => {
@@ -51,7 +51,7 @@ class TodoList extends React.Component {
         var filteredItems = this.state.items.filter(function (item) {
             return (item.key !== key);
         });
-        
+
 
         this.setState({
             items: filteredItems
@@ -91,7 +91,7 @@ class TodoList extends React.Component {
                         delete={this.deleteItem} cross={this.crossItem} />
                 </div>
                 <div className={this.state.isShownDone ? "doneListMain" : "hide"}>
-                <TodoItems entries={this.state.itemsDone}
+                    <TodoItems entries={this.state.itemsDone}
                         delete={this.deleteItem} cross={this.crossItem} />
                 </div>
             </div>
@@ -114,8 +114,8 @@ class TodoItems extends React.Component {
         this.props.cross(key);
     }
     createTasks(item) {
-        return <li className={item.className} key={item.key}>{item.text}<button className="crossButton" key={item.key} onClick={() => this.cross(item.key)}>C</button>
-            <button className="deleteButton" key={item.key} onClick={() => this.delete(item.key)}>D</button></li>;
+        return <li className={item.className} key={item.key}>{item.text}<button className="crossButton" key={item.key} onClick={() => this.cross(item.key)}><span class="glyphicon glyphicon-ok"></span></button>
+            <button className="deleteButton" key={item.key} onClick={() => this.delete(item.key)}><span class="glyphicon glyphicon-trash"></span></button></li>;
 
     }
 
@@ -125,7 +125,7 @@ class TodoItems extends React.Component {
 
         return (
             <ul className="theList">
-                {listItems} 
+                {listItems}
             </ul>
         );
     }

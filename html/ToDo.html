@@ -13,11 +13,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <title>Document</title>
 
     <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
 
     <style>
         body {
@@ -104,21 +110,38 @@
             margin-bottom: 5px;
             border-radius: 10px;
         }
+
         .deleteButton {
             position: absolute;
             left: 225px
         }
+
         .crossButton {
             position: absolute;
             left: 195px
         }
-        
 
+        .navbar {
+            background-color: #AED6F1;
+            border: 1px solid #AED6F1;
+            margin-top: -20px;
+        }
     </style>
 
 </head>
 
 <body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">ToDo List</a>
+            </div>
+
+    </nav>
+
+
+
 
     <div id="root"></div>
 
