@@ -24,38 +24,55 @@ class TodoList extends React.Component {
                 className: this.state.className
             };
 
-            this.setState((prevState) => {
-                return {
-                    items: prevState.items.concat(newItem)
-                };
+            this.state.items.push(newItem);
+
+            this.setState({
+                items: this.state.items,
+                counter : this.state.counter+1
             });
 
             this.inputElement.value = "";
         }
-        this.state.counter = this.state.counter + 1;
+       
         e.preventDefault();
     }
 
     crossItem(key) {
         var toCrossItem = this.state.items[key];
+        toCrossItem.className = "done"
         this.state.itemsDone.push(toCrossItem);
         console.log(this.state.itemsDone);
-        var newClassName = "done"
+       
+       
+        
 
         this.setState({
-            className: "caca"
+            itemsDone : this.state.itemsDone,
+            
         });
+     
     }
 
     deleteItem(key) {
         var filteredItems = this.state.items.filter(function (item) {
             return (item.key !== key);
         });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1f8132b5c006c8489e547305ee4457fe733cbdc1
 
-        this.setState({
-            items: filteredItems
+        var filteredItemsDone = this.state.itemsDone.filter(function (item) {
+            return (item.key !== key);
         });
+        
+       
+        this.setState({
+            items: filteredItems,
+            itemsDone: filteredItemsDone,
+            counter : this.state.counter-1
+        });
+        
     }
 
     hide() {
