@@ -73,6 +73,21 @@
             word-wrap: break-word;
         }
 
+        .doneListMain .theList li {
+            color: #333;
+            background-color: rgba(255, 255, 255, .5);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            width: 75%;
+            transition: background-color .2s ease-out;
+        }
+        .doneListMain .theList {
+            list-style: none;
+            padding-left: 0;
+            width: 250px;
+        }
+
         .todoListMain .theList {
             list-style: none;
             padding-left: 0;
@@ -108,7 +123,7 @@
             position: absolute;
             left: 225px
         }
-        .crossButton {
+        .removeButton {
             position: absolute;
             left: 195px
         }

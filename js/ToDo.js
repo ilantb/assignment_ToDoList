@@ -6,51 +6,66 @@ class TodoList extends React.Component {
             itemsDone: [],
             isShown: true,
             isShownDone: false,
-            counter: 0,
-            className : "toDo"
+            className: "toDo"
         };
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
         this.hide = this.hide.bind(this);
         this.hideDone = this.hideDone.bind(this);
-        this.crossItem = this.crossItem.bind(this);
+        this.removeItem = this.removeItem.bind(this);
     }
 
     addItem(e) {
         if (this.inputElement.value !== "") {
             var newItem = {
                 text: this.inputElement.value,
-                key: this.state.counter,
-                className : this.state.className
+                key: Date.now(),
+                className: this.state.className,
             };
 
             this.state.items.push(newItem);
 
             this.setState({
-                items: this.state.items,
-                counter : this.state.counter+1
+                items: this.state.items
             });
 
             this.inputElement.value = "";
         }
-       
+
         e.preventDefault();
     }
 
-    crossItem(key) {
-        var toCrossItem = this.state.items[key];
-        toCrossItem.className = "done"
-        this.state.itemsDone.push(toCrossItem);
+    removeItem(key) {
+        for (var i=0; i<this.state.items.length;i++){
+            if(this.state.items[i].key == key){
+                var toremoveItem = this.state.items[i];
+                toremoveItem.className = toremoveItem.className == "done" ? "toDo" : "done"
+                var index = i;
+            }
+        }
+        for (var i=0; i<this.state.itemsDone.length;i++){
+            if(this.state.itemsDone[i].key == key){
+                var toremoveItem = this.state.itemsDone[i];
+                toremoveItem.className = toremoveItem.className == "done" ? "toDo" : "done"
+                var index = i;
+            }
+        }
+
+        if (toremoveItem.className == "done") {
+            this.state.itemsDone.push(toremoveItem);
+            this.state.items.splice(index, 1)
+        } else {
+            this.state.items.push(toremoveItem);
+            this.state.itemsDone.splice(index, 1)
+     
+        }
         console.log(this.state.itemsDone);
-       
-       
-        
 
         this.setState({
-            itemsDone : this.state.itemsDone,
-            
+            itemsDone: this.state.itemsDone,
+            items: this.state.items
         });
-     
+
     }
 
     deleteItem(key) {
@@ -61,14 +76,13 @@ class TodoList extends React.Component {
         var filteredItemsDone = this.state.itemsDone.filter(function (item) {
             return (item.key !== key);
         });
-        
-       
+
+
         this.setState({
             items: filteredItems,
-            itemsDone: filteredItemsDone,
-            counter : this.state.counter-1
+            itemsDone: filteredItemsDone
         });
-        
+
     }
 
     hide() {
@@ -87,6 +101,7 @@ class TodoList extends React.Component {
 
     render() {
         console.log(this.state.items);
+        
         return (
             <div>
                 <button class="btns" id="toDoBtn" onClick={this.hideDone}>ToDo</button>
@@ -101,11 +116,11 @@ class TodoList extends React.Component {
                         </form>
                     </div>
                     <TodoItems entries={this.state.items}
-                        delete={this.deleteItem} cross={this.crossItem} />
+                        delete={this.deleteItem} remove={this.removeItem} />
                 </div>
                 <div className={this.state.isShownDone ? "doneListMain" : "hide"}>
-                <TodoItems entries={this.state.itemsDone}
-                        delete={this.deleteItem} cross={this.crossItem} />
+                    <TodoItems entries={this.state.itemsDone}
+                        delete={this.deleteItem} remove={this.removeItem} />
                 </div>
             </div>
         );
@@ -123,11 +138,11 @@ class TodoItems extends React.Component {
     delete(key) {
         this.props.delete(key);
     }
-    cross(key) {
-        this.props.cross(key);
+    remove(key) {
+        this.props.remove(key);
     }
     createTasks(item) {
-        return <li className={item.className} key={item.key}>{item.text}<button className="crossButton" key={item.key} onClick={() => this.cross(item.key)}>C</button>
+        return <li  key={item.key}>{item.text}<button className="removeButton" key={item.key} onClick={() => this.remove(item.key)}>C</button>
             <button className="deleteButton" key={item.key} onClick={() => this.delete(item.key)}>D</button></li>;
 
     }
@@ -138,7 +153,7 @@ class TodoItems extends React.Component {
 
         return (
             <ul className="theList">
-                {listItems} 
+                {listItems}
             </ul>
         );
     }
