@@ -57,10 +57,6 @@ class TodoList extends React.Component {
         var filteredItems = this.state.items.filter(function (item) {
             return (item.key !== key);
         });
-<<<<<<< HEAD
-
-=======
->>>>>>> 1f8132b5c006c8489e547305ee4457fe733cbdc1
 
         var filteredItemsDone = this.state.itemsDone.filter(function (item) {
             return (item.key !== key);
