@@ -6,10 +6,6 @@ class TodoList extends React.Component {
             itemsDone: [],
             isShown: true,
             isShownDone: false,
-<<<<<<< HEAD
-=======
-            counter: 0,
->>>>>>> 964c471582bd8c36450e6fe42dd20beb3211df1d
             className: "toDo"
         };
         this.addItem = this.addItem.bind(this);
@@ -23,13 +19,8 @@ class TodoList extends React.Component {
         if (this.inputElement.value !== "") {
             var newItem = {
                 text: this.inputElement.value,
-<<<<<<< HEAD
                 key: Date.now(),
                 className: this.state.className,
-=======
-                key: this.state.counter,
-                className: this.state.className
->>>>>>> 964c471582bd8c36450e6fe42dd20beb3211df1d
             };
 
             this.state.items.push(newItem);
@@ -69,18 +60,10 @@ class TodoList extends React.Component {
      
         }
         console.log(this.state.itemsDone);
-<<<<<<< HEAD
 
         this.setState({
             itemsDone: this.state.itemsDone,
             items: this.state.items
-=======
-       
-        
-        this.setState({
-            itemsDone : this.state.itemsDone ,
-            toCrossItem : this.state.toCrossItem           
->>>>>>> 964c471582bd8c36450e6fe42dd20beb3211df1d
         });
 
     }
@@ -137,11 +120,7 @@ class TodoList extends React.Component {
                 </div>
                 <div className={this.state.isShownDone ? "doneListMain" : "hide"}>
                     <TodoItems entries={this.state.itemsDone}
-<<<<<<< HEAD
                         delete={this.deleteItem} remove={this.removeItem} />
-=======
-                        delete={this.deleteItem} cross={this.crossItem} />
->>>>>>> 964c471582bd8c36450e6fe42dd20beb3211df1d
                 </div>
             </div>
         );
@@ -163,13 +142,8 @@ class TodoItems extends React.Component {
         this.props.remove(key);
     }
     createTasks(item) {
-<<<<<<< HEAD
-        return <li  key={item.key}>{item.text}<button className="removeButton" key={item.key} onClick={() => this.remove(item.key)}>C</button>
-            <button className="deleteButton" key={item.key} onClick={() => this.delete(item.key)}>D</button></li>;
-=======
-        return <li className={item.className} key={item.key}>{item.text}<button className="crossButton" key={item.key} onClick={() => this.cross(item.key)}><span class="glyphicon glyphicon-ok"></span></button>
+        return <li  key={item.key}>{item.text}<button className="removeButton" key={item.key} onClick={() => this.remove(item.key)}><span class="glyphicon glyphicon-ok"></span></button>
             <button className="deleteButton" key={item.key} onClick={() => this.delete(item.key)}><span class="glyphicon glyphicon-trash"></span></button></li>;
->>>>>>> 964c471582bd8c36450e6fe42dd20beb3211df1d
 
     }
 
