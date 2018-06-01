@@ -109,8 +109,8 @@ class TodoList extends React.Component {
                 <div className={this.state.isShown ? "todoListMain" : "hide"}>
                     <div className="header">
                         <form onSubmit={this.addItem}>
-                            <input ref={(a) => this.inputElement = a}
-                                placeholder="enter task">
+                            <input id="inputMain" ref={(a) => this.inputElement = a}
+                                placeholder="What you're gonna do ?">
                             </input>
                             <button type="submit">add</button>
                         </form>

@@ -30,11 +30,7 @@
             padding: 50px;
             background-color: #66CCFF;
             font-family: sans-serif;
-        }
-
-        #container {
-            display: flex;
-            justify-content: center;
+            position: relative;
         }
 
         .doneListMain {
@@ -43,6 +39,7 @@
             border-radius: 30px;
             padding-left: 20px;
             padding-bottom: 20px;
+            padding-top: 15px;
         }
 
         .todoListMain {
@@ -85,9 +82,10 @@
             padding: 15px;
             margin-bottom: 15px;
             border-radius: 5px;
-            width: 75%;
+            width: 143%;
             transition: background-color .2s ease-out;
         }
+
         .doneListMain .theList {
             list-style: none;
             padding-left: 0;
@@ -106,7 +104,7 @@
             padding: 15px;
             margin-bottom: 15px;
             border-radius: 5px;
-            width: 75%;
+            width: 143%;
             transition: background-color .2s ease-out;
         }
 
@@ -128,11 +126,12 @@
 
         .deleteButton {
             position: absolute;
-            left: 225px
+            left: 345px
         }
+
         .removeButton {
             position: absolute;
-            left: 195px
+            left: 310px
         }
 
         .navbar {
@@ -140,25 +139,18 @@
             border: 1px solid #AED6F1;
             margin-top: -20px;
         }
+        #inputMain{
+            width: 257px;
+        }
 
-
+        #subBtn{
+            border-radius: 20px;
+        }
     </style>
 
 </head>
 
 <body>
-
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">ToDo List</a>
-            </div>
-
-    </nav>
-
-
-
-
     <div id="root"></div>
 
     <script type="text/babel" src="../js/ToDo.js"></script>
