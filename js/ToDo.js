@@ -112,7 +112,7 @@ class TodoList extends React.Component {
                             <input id="inputMain" ref={(a) => this.inputElement = a}
                                 placeholder="What you're gonna do ?">
                             </input>
-                            <button type="submit">add</button>
+                            <button className="addItemToList" type="submit">add</button>
                         </form>
                     </div>
                     <TodoItems entries={this.state.items}
@@ -142,8 +142,8 @@ class TodoItems extends React.Component {
         this.props.remove(key);
     }
     createTasks(item) {
-        return <li  key={item.key}>{item.text}<button className="removeButton" key={item.key} onClick={() => this.remove(item.key)}><span class="glyphicon glyphicon-ok"></span></button>
-            <button className="deleteButton" key={item.key} onClick={() => this.delete(item.key)}><span class="glyphicon glyphicon-trash"></span></button></li>;
+        return <li  key={item.key}><div className="text">{item.text}</div><div className="removeButton" key={item.key} onClick={() => this.remove(item.key)}></div>
+            <div className="deleteButton" key={item.key} onClick={() => this.delete(item.key)}></div></li>;
 
     }
 
