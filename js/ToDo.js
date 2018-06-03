@@ -17,6 +17,8 @@ class TodoList extends React.Component {
 
     addItem(e) {
         if (this.inputElement.value !== "") {
+            var laught = new Audio("../sounds/dory_rire.mp3");
+            laught.play();
             var newItem = {
                 text: this.inputElement.value,
                 key: Date.now(),
@@ -36,15 +38,15 @@ class TodoList extends React.Component {
     }
 
     removeItem(key) {
-        for (var i=0; i<this.state.items.length;i++){
-            if(this.state.items[i].key == key){
+        for (var i = 0; i < this.state.items.length; i++) {
+            if (this.state.items[i].key == key) {
                 var toremoveItem = this.state.items[i];
                 toremoveItem.className = toremoveItem.className == "done" ? "toDo" : "done"
                 var index = i;
             }
         }
-        for (var i=0; i<this.state.itemsDone.length;i++){
-            if(this.state.itemsDone[i].key == key){
+        for (var i = 0; i < this.state.itemsDone.length; i++) {
+            if (this.state.itemsDone[i].key == key) {
                 var toremoveItem = this.state.itemsDone[i];
                 toremoveItem.className = toremoveItem.className == "done" ? "toDo" : "done"
                 var index = i;
@@ -57,7 +59,7 @@ class TodoList extends React.Component {
         } else {
             this.state.items.push(toremoveItem);
             this.state.itemsDone.splice(index, 1)
-     
+
         }
         console.log(this.state.itemsDone);
 
@@ -101,9 +103,19 @@ class TodoList extends React.Component {
 
     render() {
         console.log(this.state.items);
-        
+
         return (
             <div>
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                        <div class="navBar">
+                        
+                            <a class="navText">To Doryst</a>
+                            <div class="logo"></div>
+                        </div>
+                    </div>
+
+                </nav>
                 <button class="btns" id="toDoBtn" onClick={this.hideDone}>ToDo</button>
                 <button class="btns" id="doneBtn" onClick={this.hide}>Done</button>
                 <div className={this.state.isShown ? "todoListMain" : "hide"}>
@@ -142,7 +154,7 @@ class TodoItems extends React.Component {
         this.props.remove(key);
     }
     createTasks(item) {
-        return <li  key={item.key}><div className="text">{item.text}</div><div className="removeButton" key={item.key} onClick={() => this.remove(item.key)}></div>
+        return <li key={item.key}><div className="text">{item.text}</div><div className="removeButton" key={item.key} onClick={() => this.remove(item.key)}></div>
             <div className="deleteButton" key={item.key} onClick={() => this.delete(item.key)}></div></li>;
 
     }
