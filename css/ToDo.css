@@ -1,0 +1,181 @@
+body {
+    padding: 50px;
+    font-family: sans-serif;
+    background-image: url("http://www.absolutegeeks.com/wp-content/uploads/2016/06/finding-dory-3840x2160-nemo-shark-fish-pixar-animation-10217.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+}
+
+.doneListMain {
+    width: 400px;
+    border: 2px solid lightblue;
+    border-radius: 30px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+.todoListMain {
+    width: 400px;
+    border: 2px solid lightblue;
+    border-radius: 30px;
+    padding-left: 20px;
+}
+
+todoListMain .header input {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #FFF;
+    width: 165px;
+}
+
+.todoListMain .header button {
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px;
+    margin-right: 0px;
+    background-color: #90DDF0;
+    color: #FFF;
+    border: 2px solid #0066FF;
+    width: 20%;
+    border-radius: 5px;
+}
+
+.todoListMain .header button:hover {
+    background-color: #003399;
+    border: 2px solid #003399;
+    cursor: pointer;
+}
+
+.theList {
+    word-wrap: break-word;
+}
+
+.doneListMain .theList li {
+    color: #333;
+    background-color: rgba(255, 255, 255, .5);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    width: 142%;
+    transition: background-color .2s ease-out;
+    margin-top: 9px;
+}
+
+.doneListMain .theList {
+    list-style: none;
+    padding-left: 0;
+    width: 250px;
+}
+
+.todoListMain .theList {
+    list-style: none;
+    padding-left: 0;
+    width: 250px;
+}
+
+.todoListMain .theList li {
+    color: #333;
+    background-color: rgba(255, 255, 255, .5);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    width: 142%;
+    transition: background-color .2s ease-out;
+}
+
+.todoListMain .theList li:hover {
+    background-color: #fafafa;
+}
+
+ul.theList {
+    padding: 0;
+}
+
+.btns {
+    width: 150px;
+    height: 30px;
+    margin-left: 30px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+}
+
+.deleteButton {
+    position: relative;
+    left: 300px;
+    background-image: url("https://image.flaticon.com/icons/png/128/25/25214.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 20px;
+    width: 20px;
+    bottom: 36px;
+}
+
+.deleteButton:hover {
+    cursor: pointer;
+}
+
+.doneListMain .theList li .removeButton {
+    position: relative;
+    left: 267px;
+    background-image: url("http://icons.iconarchive.com/icons/visualpharm/must-have/256/Delete-icon.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 22px;
+    width: 22px;
+    bottom: 14px;
+}
+
+.theList li .removeButton {
+    position: relative;
+    left: 267px;
+    background-image: url("https://www.shareicon.net/data/256x256/2016/08/20/817720_check_395x512.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 30px;
+    width: 30px;
+    bottom: 10px;
+}
+
+.removeButton:hover {
+    cursor: pointer;
+}
+
+.navText {
+    color: white;
+    font-size: 20px;
+    position: relative;
+    top: 15px;
+}
+
+.navText:hover {
+    cursor: pointer;
+    text-decoration: none
+}
+
+.navbar {
+    background-color: #90DDF0;
+    border: 1px solid #AED6F1;
+    
+}
+
+input {
+    width: 60%;
+}
+
+.text {
+    width: 250px
+}
+
+.logo {
+    background-image: url("https://s3.amazonaws.com/user-media.venngage.com/805182-0728d5644a6be9bb2d62380148c34392.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 173px;
+    height: 56px;
+    float: right;
+}
