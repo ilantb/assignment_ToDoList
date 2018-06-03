@@ -109,7 +109,7 @@ class TodoList extends React.Component {
                 <nav class="navbar navbar-inverse">
                     <div class="container-fluid">
                         <div class="navBar">
-                        
+
                             <a class="navText">To Doryst</a>
                             <div class="logo"></div>
                         </div>
